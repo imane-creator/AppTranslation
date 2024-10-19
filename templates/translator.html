@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator</title>
+</head>
+<body>
+<h3>Translator</h3>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="from_lang">From language:</label>
+    <select name="from_lang" id="from_lang">
+        <option value="fr">French</option>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="de">German</option>
+        <!-- Add more languages as needed -->
+    </select>
+<br>
+    <textarea name="text" id="text" cols="50" rows="10" placeholder="Enter text to translate"></textarea>
+
+    <br>
+    <label for="to_lang">To language:</label>
+    <select name="to_lang" id="to_lang">
+        <option value="fr">French</option>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="de">German</option>
+        <!-- Add more languages as needed -->
+    </select>
+
+
+
+    <button type="submit">Translate</button>
+</form>
+
+{% if translated_text %}
+<p>{{ translated_text }}</p>
+{% endif %}
+
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+</body>
+</html>
